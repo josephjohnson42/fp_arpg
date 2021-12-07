@@ -78,7 +78,7 @@ $(".heal").mousedown(function(){
             healable = false;
             pHealth += 2;
             $(".healthFlash").css("background-color", "white");
-            $(".healthFlash").fadeIn(10);    //flash health bar
+            $(".healthFlash").fadeIn(10);    //flash health barr
             $(".healthFlash").fadeOut(500);
             checkHp();
         }
