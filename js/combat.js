@@ -32,7 +32,7 @@ $(".startScreen").click(function(){
         time = 1000;
         $(".background").fadeOut(75);
         $(".backgroundHeal").fadeOut(75);
-        $(".backgroundAttack").fadeOut(75);
+        
         $(".healthFlash").fadeOut(75);
         $(".eAtk").fadeOut(75);
         $("#scoreboard").text("Score: 000");
