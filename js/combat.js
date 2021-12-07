@@ -469,10 +469,10 @@ function patternMurder(){
                 $(".eAttack6 img").fadeIn(100);
             
                 setTimeout(function(){
-                    $(".eAttack2 img").fadeIn(100);
+                    $(".eAttack5 img").fadeIn(100);
                 
                     setTimeout(function(){
-                        $(".eAttack5 img").fadeIn(100);
+                        $(".eAttack2 img").fadeIn(100);
                     
                         setTimeout(function(){
                             console.log("PHASE COMPLETE");
