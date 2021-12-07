@@ -198,7 +198,7 @@ function damaged(){
             proceedIn = true;
             //FIREBASE STUFF HERE
             scoreJson['score'] = score;
-            firebase.firestore().collection('hotelreservation').add(inputJson);
+            firebase.firestore().collection('rpgScore').add(inputJson);
         });
     }
 
