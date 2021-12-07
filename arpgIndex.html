@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Action Rpg - Fight The Funny Man</title>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <style type="text/css" media="all">
+            @import url('css/main.css');
+
+            div{position: absolute;}
+            body{background-color: black; overflow-x: hidden;}    /**allows for screenshake without the funny bar appearing**/
+            img{pointer-events: none; user-select: none;}           /**prevents screen going blue with higlighter fluid**/
+
+            .mann{ top: 0%; left: 0%; height: 100%; width: 100%; z-index: 1;
+                background-image: url("img/bg.png"); background-size: 100%; background-size: cover; background-repeat: no-repeat;}
+
+            .background{ top: 0%; left: 0%; height: 100%; width: 100%; z-index: 2;
+                background-image: url("img/effect_damaged.png"); background-size: 100%; background-size: cover; background-repeat: no-repeat;
+            }
+            .backgroundHeal{ top: 0%; left: 0%; height: 100%; width: 100%; z-index: 3;
+                background-image: url("img/effect_health.png"); background-size: 100%; background-size: cover; background-repeat: no-repeat;
+            }
+            .backgroundAttack{ top: 0%; left: 0%; height: 100%; width: 100%; z-index: 4;
+                background-image: url("img/effect_Attack.png"); background-size: 100%; background-size: cover; background-repeat: no-repeat;
+            }
+
+            .startScreen{ top: 0%; left: 0%; height: 100%; width: 100%; z-index: 1000;
+                background-color: black;
+                color: white;
+                text-align: center;
+            }
+
+            .score{ top: 0%; left: 0%; height: 20%; width: 100%; z-index: 70;
+            }
+            .scoreTxt{ top: 0%; left: 0%; height: 20%; width: 100%; z-index: 80; text-align: center; color: white; font-size: 15px;
+            }
+
+            .playerBar{ top: 80%; left: 0%; height: 20%; width: 100%; z-index: 20;
+            }
+            .barIndic{ top: 80%; left: 0%; height: 20%; width: 100%; z-index: 10;
+            }
+
+
+            .health{ top: 80%; left: 40%; height: 20%; width: 20%; z-index: 40;
+            }
+            .healthIndic{ top: 85%; left: 45%; height: 10%; width: 10%; z-index: 30; background-color: rgb(187, 135, 67);
+            }
+            .healthFlash{ top: 85%; left: 45%; height: 10%; width: 10%; z-index: 35; background-color: white;
+            }
+
+            .attack{ top: 80%; left: 20%; height: 20%; width: 20%; z-index: 50;
+            }
+            .heal{ top: 80%; left: 60%; height: 20%; width: 20%; z-index: 60;
+            }
+
+            
+            .eAttack1{ top: 15%; left: 30%; width: 10%; height: 20%; z-index: 101;
+            }
+            .eAttack2{ top: 15%; left: 60%; width: 10%; height: 20%; z-index: 102;
+            }
+            .eAttack3{ top: 35%; left: 25%; width: 10%; height: 20%; z-index: 103;
+            }
+            .eAttack4{ top: 35%; left: 65%; width: 10%; height: 20%; z-index: 104;
+            }
+            .eAttack5{ top: 55%; left: 30%; width: 10%; height: 20%; z-index: 105;
+            }
+            .eAttack6{ top: 55%; left: 60%; width: 10%; height: 20%; z-index: 106;
+            }
+            .eAtk{                      /**needed so that eAttacks can be clicked w/o having to move them offscreen**/
+                pointer-events: all;
+                user-select: none;
+            }
+
+        </style>
+    </head>
+
+
+    <body>
+        <!--        Start/Game Over Screen          -->
+        <div class="startScreen">
+            <br></br><br></br>
+            <p id="msg1">Click to begin</p>
+            <p id="msg2">Good Luck</p>
+        </div>
+
+        <!--        Bg and Bg Vfx          -->
+        <div class="mann"></div>
+        <div class="background"></div>
+        <div class="backgroundHeal"></div>
+        <div class="backgroundAttack"></div>
+
+        <!--        ScoreBoard (kinda?)          -->
+        <div class="score"><img src="img/scoreBar.png" alt="scorebar" width="100%" height="100%"></div>
+        <div class="scoreTxt">
+            <p id="scoreboard">Score: 000</p>
+        </div>
+
+        <!--        Player HUD          -->
+        <div class="playerBar"><img src="img/playerBar.png" alt="belt" width="100%" height="100%"></div>
+        <div class="barIndic"><img src="img/barGlow.png" alt="NOW" width="100%" height="100%"></div>
+
+        <div class="health"><img src="img/playerHealthBar.png" alt="healthBar" width="100%" height="100%"></div>
+        <div class="healthIndic"></div>
+        <div class="healthFlash"></div>
+
+        <!--        Player Buttons          -->
+        <div class="attack"><img src="img/attackButton.png" alt="attackButton" width="100%" height="100%" class="atk"></div>
+        <div class="heal"><img src="img/healButton.png" alt="healButton" width="100%" height="100%" class="h"></div>
+
+        <!--        All Attack Pos          -->
+        <div class="eAttack1" id="eA"><img src="img/enemyAttack.png" alt="blockThis" width="100%" height="100%" class="eAtk"></div>
+        <div class="eAttack2" id="eA"><img src="img/enemyAttack.png" alt="blockThis" width="100%" height="100%" class="eAtk"></div>
+        <div class="eAttack3" id="eA"><img src="img/enemyAttack.png" alt="blockThis" width="100%" height="100%" class="eAtk"></div>
+        <div class="eAttack4" id="eA"><img src="img/enemyAttack.png" alt="blockThis" width="100%" height="100%" class="eAtk"></div>
+        <div class="eAttack5" id="eA"><img src="img/enemyAttack.png" alt="blockThis" width="100%" height="100%" class="eAtk"></div>
+        <div class="eAttack6" id="eA"><img src="img/enemyAttack.png" alt="blockThis" width="100%" height="100%" class="eAtk"></div>
+
+
+        <script src="js/combat.js"></script>
+    </body>
+</html>
