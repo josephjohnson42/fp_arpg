@@ -50,9 +50,9 @@ $(".attack").mousedown(function(){
         attackable = false;
         score += 100;
         $("#scoreboard").text("Score: "+score);
-        screenShake();
         $(".backgroundAttack").fadeIn(10);
         $(".backgroundAttack").fadeOut(500);
+        screenShake();
     
     
         //advances phase if time
